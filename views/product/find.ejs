@@ -1,0 +1,26 @@
+<%if(status === "Error") { %>
+<div class="alert alert-danger" role="alert"><%=statusDescription%></div>
+<% } %>
+<form role="form" action="/product" method="post">
+    <div class="panel-body form-inline">
+        <label>Search</label>
+        <input class="form-control" type="text" id="txtSearch" name="search" placeholder="Search" value="<%=search%>"/>
+        <input type="hidden" name="_method" value="get">
+        <input type="hidden" name="search" value="<%=search%>">
+        <input class="btn btn-default" type="submit" id="txtSearch" value="Submit" />
+    </div>
+    <%
+        for(var _index=0; _index < products.length; _index++) {
+            var _product = products[_index];
+        %>
+    <span>
+        <img src="<%=_product.media.m%>" alt="<%=_product.title%>" style="float: left;
+                width:  300px;
+                height: 300px;
+                background-size: cover;">
+    </span>
+    <%
+}
+%>
+</div>
+</form>  

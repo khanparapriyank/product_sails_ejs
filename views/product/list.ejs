@@ -1,0 +1,33 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+            <th>Product Image</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%
+        for(var _index=0; _index < products.length; _index++) {
+            var _product = products[_index];
+        %>
+        
+        <tr>
+            <td><a href="/product/<%=_product.pid%>"><%=_product.pid%></a></td>
+            <td><%=_product.name%></td>
+            <td><%=_product.price%></td>
+            <td><img src="<%=_product.productImageUrl%>" alt="<%=_product.name%>" class="img-circle" width="50px" height="50px"></td>
+            <td>
+                <form action='product' method='post'>
+                    
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="pid" value="<%=_product.pid%>">
+                    <button type="submit" class="btn btn-danger">X</button>
+                </form>
+            </td>
+        </tr>
+        <%}%>
+    </tbody>
+</table>
